@@ -1,1 +1,2 @@
 *.go text eol=lf
+caddytest/integration/testdata/foo_with_trailing_newline.txt eol=lf
