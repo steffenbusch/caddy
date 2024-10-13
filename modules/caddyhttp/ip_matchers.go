@@ -156,7 +156,7 @@ func (m MatchRemoteIP) Match(r *http.Request) bool {
 func (m MatchRemoteIP) MatchWithError(r *http.Request) (bool, error) {
 	// if handshake is not finished, we infer 0-RTT that has not verified remote IP; could be spoofed
 	if r.TLS != nil && !r.TLS.HandshakeComplete {
-		return false, fmt.Errorf("TLS handshake not complete, remote IP cannot be verified")
+		return false, Error(http.StatusTooEarly, nil)
 	}
 
 	address := r.RemoteAddr
